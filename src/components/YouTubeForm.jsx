@@ -67,7 +67,7 @@ const YouTubeForm = () => {
         </div>
 
         {errors?.username && (
-          <span className="error">{errors.username.message}</span>
+          <span className="error">{errors?.username?.message}</span>
         )}
 
         <div className="form-control">
@@ -103,7 +103,9 @@ const YouTubeForm = () => {
           />
         </div>
 
-        {errors?.email && <span className="error">{errors.email.message}</span>}
+        {errors?.email && (
+          <span className="error">{errors?.email?.message}</span>
+        )}
 
         <div className="form-control">
           <label htmlFor="channel">Channel</label>
@@ -121,27 +123,62 @@ const YouTubeForm = () => {
         </div>
 
         {errors.channel && (
-          <span className="error">{errors.channel.message}</span>
+          <span className="error">{errors?.channel?.message}</span>
         )}
 
         <div className="form-control">
           <label htmlFor="twitter">Twitter</label>
-          <input {...register('social.twitter')} type="text" id="twitter" />
+          <input
+            {...register('social.twitter', {
+              required: {
+                value: true,
+                message: 'Twitter account link is required',
+              },
+            })}
+            type="text"
+            id="twitter"
+          />
         </div>
+
+        {errors?.social?.twitter && (
+          <span className="error">{errors?.social?.twitter?.message}</span>
+        )}
 
         <div className="form-control">
           <label htmlFor="facebook">Facebook</label>
-          <input {...register('social.facebook')} type="text" id="facebook" />
+          <input
+            {...register('social.facebook', {
+              required: {
+                value: true,
+                message: 'Facebook account link is required',
+              },
+            })}
+            type="text"
+            id="facebook"
+          />
         </div>
+
+        {errors?.social?.facebook && (
+          <span className="error">{errors?.social?.facebook?.message}</span>
+        )}
 
         <div className="form-control">
           <label htmlFor="primary-phone">Primary Phone Number</label>
           <input
-            {...register('phoneNumbers[0]')}
+            {...register('phoneNumbers[0]', {
+              required: {
+                value: true,
+                message: 'Primary Phone Number is required',
+              },
+            })}
             type="text"
             id="primary-phone"
           />
         </div>
+
+        {errors?.phoneNumbers && (
+          <span className="error">{errors?.phoneNumbers[0]?.message}</span>
+        )}
 
         <div className="form-control">
           <label htmlFor="secondary-phone">Secondary Phone Number</label>
