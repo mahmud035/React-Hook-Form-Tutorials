@@ -10,7 +10,18 @@ const YouTubeForm = () => {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: async () => {
+      const res = await fetch('https://jsonplaceholder.typicode.com/users/1');
+      const data = await res.json();
+      // console.log(data);
+      return {
+        username: '',
+        email: data.email,
+        channel: '',
+      };
+    },
+  });
 
   console.log('errors:', errors);
 
