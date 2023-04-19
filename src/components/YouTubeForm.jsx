@@ -1,5 +1,5 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, useFieldArray } from 'react-hook-form';
 import { DevTool } from '@hookform/devtools';
 
 let renderCount = 0;
@@ -32,7 +32,13 @@ const YouTubeForm = () => {
         facebook: '',
       },
       phoneNumbers: ['', ''],
+      phNumbers: [{ number: '' }],
     },
+  });
+
+  const { fields, append, remove } = useFieldArray({
+    name: 'phNumbers',
+    control,
   });
 
   console.log('errors:', errors);
@@ -188,6 +194,33 @@ const YouTubeForm = () => {
             id="secondary-phone"
           />
         </div>
+
+        {/* lec: 15 => Dynamic Fields START */}
+        <div>
+          <label>List of phone numbers</label>
+          <div>
+            {fields.map((field, index) => {
+              return (
+                <div className="form-control" key={field.id}>
+                  <input
+                    type="text"
+                    {...register(`phNumbers.${index}.number`)}
+                  />
+                  {index > 0 && (
+                    <button type="button" onClick={() => remove(index)}>
+                      Remove
+                    </button>
+                  )}
+                </div>
+              );
+            })}
+
+            <button type="button" onClick={() => append({ number: '' })}>
+              Add Phone Number
+            </button>
+          </div>
+        </div>
+        {/* lec: 15 => Dynamic Fields END */}
 
         <button>Submit</button>
       </form>
