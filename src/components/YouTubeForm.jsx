@@ -12,7 +12,7 @@ const YouTubeForm = () => {
     formState: { errors },
   } = useForm();
 
-  console.log(errors);
+  console.log('errors:', errors);
 
   const handleRegister = (data) => {
     console.log(data);
@@ -41,7 +41,9 @@ const YouTubeForm = () => {
           name="username"
         />
 
-        {errors?.username && <span>{errors.username.message}</span>}
+        {errors?.username && (
+          <span className="error">{errors.username.message}</span>
+        )}
 
         <label htmlFor="email">E-mail</label>
         <input
@@ -60,7 +62,7 @@ const YouTubeForm = () => {
           name="email"
         />
 
-        {errors?.email && <span>{errors.email.message}</span>}
+        {errors?.email && <span className="error">{errors.email.message}</span>}
 
         <label htmlFor="channel">Channel</label>
         <input
@@ -75,7 +77,9 @@ const YouTubeForm = () => {
           name="channel"
         />
 
-        {errors.channel && <span>{errors.channel.message}</span>}
+        {errors.channel && (
+          <span className="error">{errors.channel.message}</span>
+        )}
 
         <button>Submit</button>
       </form>
