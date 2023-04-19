@@ -31,6 +31,7 @@ const YouTubeForm = () => {
         twitter: '',
         facebook: '',
       },
+      phoneNumbers: ['', ''],
     },
   });
 
@@ -131,6 +132,24 @@ const YouTubeForm = () => {
         <div className="form-control">
           <label htmlFor="facebook">Facebook</label>
           <input {...register('social.facebook')} type="text" id="facebook" />
+        </div>
+
+        <div className="form-control">
+          <label htmlFor="primary-phone">Primary Phone Number</label>
+          <input
+            {...register('phoneNumbers[0]')}
+            type="text"
+            id="primary-phone"
+          />
+        </div>
+
+        <div className="form-control">
+          <label htmlFor="secondary-phone">Secondary Phone Number</label>
+          <input
+            {...register('phoneNumbers[1]')}
+            type="text"
+            id="secondary-phone"
+          />
         </div>
 
         <button>Submit</button>
