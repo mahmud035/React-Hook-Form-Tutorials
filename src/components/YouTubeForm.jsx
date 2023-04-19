@@ -23,6 +23,7 @@ const YouTubeForm = () => {
     // console.log(username, email, channel);
   };
 
+  renderCount++;
   return (
     <div>
       <h1>YouTube Form ({renderCount / 2})</h1>
