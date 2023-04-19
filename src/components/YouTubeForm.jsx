@@ -27,36 +27,55 @@ const YouTubeForm = () => {
   return (
     <div>
       <h1>YouTube Form ({renderCount / 2})</h1>
-      <form onSubmit={handleSubmit(handleRegister)}>
+      <form onSubmit={handleSubmit(handleRegister)} noValidate>
         <label htmlFor="username">Username</label>
         <input
-          {...register('username', { required: true })}
+          {...register('username', {
+            required: {
+              value: true,
+              message: 'Username is required',
+            },
+          })}
           type="text"
           id="username"
           name="username"
         />
 
-        {errors?.username && <span>This field is required</span>}
+        {errors?.username && <span>{errors.username.message}</span>}
 
         <label htmlFor="email">E-mail</label>
         <input
-          {...register('email', { required: true })}
+          {...register('email', {
+            required: {
+              value: true,
+              message: 'Email is required',
+            },
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: 'Invalid email format',
+            },
+          })}
           type="email"
           id="email"
           name="email"
         />
 
-        {errors?.email && <span>This field is required</span>}
+        {errors?.email && <span>{errors.email.message}</span>}
 
         <label htmlFor="channel">Channel</label>
         <input
-          {...register('channel', { required: true })}
+          {...register('channel', {
+            required: {
+              value: true,
+              message: 'Channel name is required',
+            },
+          })}
           type="text"
           id="channel"
           name="channel"
         />
 
-        {errors.channel && <span>This field is required</span>}
+        {errors.channel && <span>{errors.channel.message}</span>}
 
         <button>Submit</button>
       </form>
