@@ -27,6 +27,10 @@ const YouTubeForm = () => {
       username: '',
       email: '',
       channel: '',
+      social: {
+        twitter: '',
+        facebook: '',
+      },
     },
   });
 
@@ -46,72 +50,88 @@ const YouTubeForm = () => {
     <div>
       <h1>YouTube Form ({renderCount / 2})</h1>
       <form onSubmit={handleSubmit(handleRegister)} noValidate>
-        <label htmlFor="username">Username</label>
-        <input
-          {...register('username', {
-            required: {
-              value: true,
-              message: 'Username is required',
-            },
-          })}
-          type="text"
-          id="username"
-          name="username"
-        />
+        <div className="form-control">
+          <label htmlFor="username">Username</label>
+          <input
+            {...register('username', {
+              required: {
+                value: true,
+                message: 'Username is required',
+              },
+            })}
+            type="text"
+            id="username"
+            name="username"
+          />
+        </div>
 
         {errors?.username && (
           <span className="error">{errors.username.message}</span>
         )}
 
-        <label htmlFor="email">E-mail</label>
-        <input
-          {...register('email', {
-            required: {
-              value: true,
-              message: 'Email is required',
-            },
-            pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: 'Invalid email format',
-            },
-            validate: {
-              notAdmin: (fieldValue) => {
-                return (
-                  fieldValue !== 'admin@example.com' ||
-                  'Enter a different email address'
-                );
+        <div className="form-control">
+          <label htmlFor="email">E-mail</label>
+          <input
+            {...register('email', {
+              required: {
+                value: true,
+                message: 'Email is required',
               },
-              notBlackListed: (fieldValue) => {
-                return (
-                  !fieldValue.endsWith('baddomain.com') ||
-                  'This domain is not supported'
-                );
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: 'Invalid email format',
               },
-            },
-          })}
-          type="email"
-          id="email"
-          name="email"
-        />
+              validate: {
+                notAdmin: (fieldValue) => {
+                  return (
+                    fieldValue !== 'admin@example.com' ||
+                    'Enter a different email address'
+                  );
+                },
+                notBlackListed: (fieldValue) => {
+                  return (
+                    !fieldValue.endsWith('baddomain.com') ||
+                    'This domain is not supported'
+                  );
+                },
+              },
+            })}
+            type="email"
+            id="email"
+            name="email"
+          />
+        </div>
 
         {errors?.email && <span className="error">{errors.email.message}</span>}
 
-        <label htmlFor="channel">Channel</label>
-        <input
-          {...register('channel', {
-            required: {
-              value: true,
-              message: 'Channel name is required',
-            },
-          })}
-          type="text"
-          id="channel"
-          name="channel"
-        />
+        <div className="form-control">
+          <label htmlFor="channel">Channel</label>
+          <input
+            {...register('channel', {
+              required: {
+                value: true,
+                message: 'Channel name is required',
+              },
+            })}
+            type="text"
+            id="channel"
+            name="channel"
+          />
+        </div>
 
         {errors.channel && (
           <span className="error">{errors.channel.message}</span>
         )}
+
+        <div className="form-control">
+          <label htmlFor="twitter">Twitter</label>
+          <input {...register('social.twitter')} type="text" id="twitter" />
+        </div>
+
+        <div className="form-control">
+          <label htmlFor="facebook">Facebook</label>
+          <input {...register('social.facebook')} type="text" id="facebook" />
+        </div>
 
         <button>Submit</button>
       </form>
