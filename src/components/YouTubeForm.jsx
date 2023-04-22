@@ -72,11 +72,11 @@ const YouTubeForm = () => {
             id="username"
             name="username"
           />
-        </div>
 
-        {errors?.username && (
-          <span className="error">{errors?.username?.message}</span>
-        )}
+          {errors?.username && (
+            <span className="error">{errors?.username?.message}</span>
+          )}
+        </div>
 
         <div className="form-control">
           <label htmlFor="email">E-mail</label>
@@ -109,11 +109,11 @@ const YouTubeForm = () => {
             id="email"
             name="email"
           />
-        </div>
 
-        {errors?.email && (
-          <span className="error">{errors?.email?.message}</span>
-        )}
+          {errors?.email && (
+            <span className="error">{errors?.email?.message}</span>
+          )}
+        </div>
 
         <div className="form-control">
           <label htmlFor="channel">Channel</label>
@@ -128,11 +128,11 @@ const YouTubeForm = () => {
             id="channel"
             name="channel"
           />
-        </div>
 
-        {errors.channel && (
-          <span className="error">{errors?.channel?.message}</span>
-        )}
+          {errors.channel && (
+            <span className="error">{errors?.channel?.message}</span>
+          )}
+        </div>
 
         <div className="form-control">
           <label htmlFor="age">Age</label>
@@ -147,9 +147,9 @@ const YouTubeForm = () => {
             type="number"
             id="age"
           />
-        </div>
 
-        {errors.age && <span className="error">{errors?.age?.message}</span>}
+          {errors.age && <span className="error">{errors?.age?.message}</span>}
+        </div>
 
         <div className="form-control">
           <label htmlFor="age">Date Of Birth</label>
@@ -180,11 +180,11 @@ const YouTubeForm = () => {
             type="text"
             id="twitter"
           />
-        </div>
 
-        {errors?.social?.twitter && (
-          <span className="error">{errors?.social?.twitter?.message}</span>
-        )}
+          {errors?.social?.twitter && (
+            <span className="error">{errors?.social?.twitter?.message}</span>
+          )}
+        </div>
 
         <div className="form-control">
           <label htmlFor="facebook">Facebook</label>
@@ -198,11 +198,11 @@ const YouTubeForm = () => {
             type="text"
             id="facebook"
           />
-        </div>
 
-        {errors?.social?.facebook && (
-          <span className="error">{errors?.social?.facebook?.message}</span>
-        )}
+          {errors?.social?.facebook && (
+            <span className="error">{errors?.social?.facebook?.message}</span>
+          )}
+        </div>
 
         <div className="form-control">
           <label htmlFor="primary-phone">Primary Phone Number</label>
@@ -216,11 +216,11 @@ const YouTubeForm = () => {
             type="text"
             id="primary-phone"
           />
-        </div>
 
-        {errors?.phoneNumbers && (
-          <span className="error">{errors?.phoneNumbers[0]?.message}</span>
-        )}
+          {errors?.phoneNumbers && (
+            <span className="error">{errors?.phoneNumbers[0]?.message}</span>
+          )}
+        </div>
 
         <div className="form-control">
           <label htmlFor="secondary-phone">Secondary Phone Number</label>
