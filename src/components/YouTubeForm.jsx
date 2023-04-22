@@ -33,6 +33,8 @@ const YouTubeForm = () => {
       },
       phoneNumbers: ['', ''],
       phNumbers: [{ number: '' }],
+      age: 0,
+      dob: new Date(),
     },
   });
 
@@ -131,6 +133,40 @@ const YouTubeForm = () => {
         {errors.channel && (
           <span className="error">{errors?.channel?.message}</span>
         )}
+
+        <div className="form-control">
+          <label htmlFor="age">Age</label>
+          <input
+            {...register('age', {
+              required: {
+                value: true,
+                message: 'Age name is required',
+              },
+              valueAsNumber: true,
+            })}
+            type="number"
+            id="age"
+          />
+        </div>
+
+        {errors.age && <span className="error">{errors?.age?.message}</span>}
+
+        <div className="form-control">
+          <label htmlFor="age">Date Of Birth</label>
+          <input
+            {...register('dob', {
+              required: {
+                value: true,
+                message: 'Date of birth is required',
+              },
+              valueAsDate: true,
+            })}
+            type="date"
+            id="dob"
+          />
+
+          {errors.dob && <span className="error">{errors?.dob?.message}</span>}
+        </div>
 
         <div className="form-control">
           <label htmlFor="twitter">Twitter</label>
