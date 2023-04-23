@@ -11,6 +11,7 @@ const YouTubeForm = () => {
     handleSubmit,
     watch,
     getValues,
+    setValue,
     formState: { errors },
   } = useForm({
     //* INFO: set previously saved data as a defaultValues
@@ -63,6 +64,14 @@ const YouTubeForm = () => {
   const handleGetValues = () => {
     const values = getValues();
     console.log('getValues:', values);
+  };
+
+  const handleSetValue = () => {
+    setValue('username', 'mahmud', {
+      shouldDirty: true,
+      shouldTouch: true,
+      shouldValidate: true,
+    });
   };
 
   renderCount++;
@@ -261,6 +270,9 @@ const YouTubeForm = () => {
         {/* lec: 15 => Dynamic Fields END */}
         <button type="button" onClick={handleGetValues}>
           Get Values
+        </button>{' '}
+        <button type="button" onClick={handleSetValue}>
+          Set Value
         </button>{' '}
         <button>Submit</button>
       </form>
