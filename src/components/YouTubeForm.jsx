@@ -41,7 +41,7 @@ const YouTubeForm = () => {
     },
   });
 
-  console.log({ touchedFields, dirtyFields, isDirty });
+  // console.log({ touchedFields, dirtyFields, isDirty });
 
   const { fields, append, remove } = useFieldArray({
     name: 'phNumbers',
@@ -139,6 +139,7 @@ const YouTubeForm = () => {
           <label htmlFor="channel">Channel</label>
           <input
             {...register('channel', {
+              disabled: watch('username') === '', // conditionally disabled input field
               required: {
                 value: true,
                 message: 'Channel name is required',
