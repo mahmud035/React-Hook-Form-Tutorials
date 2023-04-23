@@ -9,6 +9,7 @@ const YouTubeForm = () => {
     register,
     control,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm({
     //* INFO: set previously saved data as a defaultValues
@@ -42,8 +43,12 @@ const YouTubeForm = () => {
     name: 'phNumbers',
     control,
   });
-
   console.log('errors:', errors);
+
+  // const watchShowAge = watch('age');
+  // const allFields = watch();
+  // const [uname, email] = watch(['username', 'email']);
+  // console.log(uname, email);
 
   const handleRegister = (data) => {
     console.log(data);
