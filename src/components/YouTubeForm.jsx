@@ -10,6 +10,7 @@ const YouTubeForm = () => {
     control,
     handleSubmit,
     watch,
+    getValues,
     formState: { errors },
   } = useForm({
     //* INFO: set previously saved data as a defaultValues
@@ -48,7 +49,7 @@ const YouTubeForm = () => {
   // const watchShowAge = watch('age');
   // const allFields = watch();
   // const [uname, email] = watch(['username', 'email']);
-  // console.log(uname, email);
+  // console.log('watch:',uname, email);
 
   const handleRegister = (data) => {
     console.log(data);
@@ -57,6 +58,11 @@ const YouTubeForm = () => {
     const email = data.email;
     const channel = data.channel;
     // console.log(username, email, channel);
+  };
+
+  const handleGetValues = () => {
+    const values = getValues();
+    console.log('getValues:', values);
   };
 
   renderCount++;
@@ -82,7 +88,6 @@ const YouTubeForm = () => {
             <span className="error">{errors?.username?.message}</span>
           )}
         </div>
-
         <div className="form-control">
           <label htmlFor="email">E-mail</label>
           <input
@@ -119,7 +124,6 @@ const YouTubeForm = () => {
             <span className="error">{errors?.email?.message}</span>
           )}
         </div>
-
         <div className="form-control">
           <label htmlFor="channel">Channel</label>
           <input
@@ -138,7 +142,6 @@ const YouTubeForm = () => {
             <span className="error">{errors?.channel?.message}</span>
           )}
         </div>
-
         <div className="form-control">
           <label htmlFor="age">Age</label>
           <input
@@ -155,7 +158,6 @@ const YouTubeForm = () => {
 
           {errors.age && <span className="error">{errors?.age?.message}</span>}
         </div>
-
         <div className="form-control">
           <label htmlFor="age">Date Of Birth</label>
           <input
@@ -172,7 +174,6 @@ const YouTubeForm = () => {
 
           {errors.dob && <span className="error">{errors?.dob?.message}</span>}
         </div>
-
         <div className="form-control">
           <label htmlFor="twitter">Twitter</label>
           <input
@@ -190,7 +191,6 @@ const YouTubeForm = () => {
             <span className="error">{errors?.social?.twitter?.message}</span>
           )}
         </div>
-
         <div className="form-control">
           <label htmlFor="facebook">Facebook</label>
           <input
@@ -208,7 +208,6 @@ const YouTubeForm = () => {
             <span className="error">{errors?.social?.facebook?.message}</span>
           )}
         </div>
-
         <div className="form-control">
           <label htmlFor="primary-phone">Primary Phone Number</label>
           <input
@@ -226,7 +225,6 @@ const YouTubeForm = () => {
             <span className="error">{errors?.phoneNumbers[0]?.message}</span>
           )}
         </div>
-
         <div className="form-control">
           <label htmlFor="secondary-phone">Secondary Phone Number</label>
           <input
@@ -235,7 +233,6 @@ const YouTubeForm = () => {
             id="secondary-phone"
           />
         </div>
-
         {/* lec: 15 => Dynamic Fields START */}
         <div>
           <label>List of phone numbers</label>
@@ -262,7 +259,9 @@ const YouTubeForm = () => {
           </div>
         </div>
         {/* lec: 15 => Dynamic Fields END */}
-
+        <button type="button" onClick={handleGetValues}>
+          Get Values
+        </button>{' '}
         <button>Submit</button>
       </form>
       <DevTool control={control} /> {/* set up the dev tool */}
