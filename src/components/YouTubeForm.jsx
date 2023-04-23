@@ -12,7 +12,7 @@ const YouTubeForm = () => {
     watch,
     getValues,
     setValue,
-    formState: { errors },
+    formState: { errors, touchedFields, dirtyFields, isDirty },
   } = useForm({
     //* INFO: set previously saved data as a defaultValues
     // defaultValues: async () => {
@@ -40,6 +40,8 @@ const YouTubeForm = () => {
       dob: new Date(),
     },
   });
+
+  console.log({ touchedFields, dirtyFields, isDirty });
 
   const { fields, append, remove } = useFieldArray({
     name: 'phNumbers',
