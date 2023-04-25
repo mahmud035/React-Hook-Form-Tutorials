@@ -63,6 +63,10 @@ const YouTubeForm = () => {
     // console.log(username, email, channel);
   };
 
+  const onError = (errors) => {
+    console.log('Form errors', errors);
+  };
+
   const handleGetValues = () => {
     const values = getValues();
     console.log('getValues:', values);
@@ -80,7 +84,7 @@ const YouTubeForm = () => {
   return (
     <div>
       <h1>YouTube Form ({renderCount / 2})</h1>
-      <form onSubmit={handleSubmit(handleRegister)} noValidate>
+      <form onSubmit={handleSubmit(handleRegister, onError)} noValidate>
         <div className="form-control">
           <label htmlFor="username">Username</label>
           <input
