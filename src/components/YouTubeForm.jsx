@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { DevTool } from '@hookform/devtools';
 
@@ -12,6 +12,7 @@ const YouTubeForm = () => {
     watch,
     getValues,
     setValue,
+    reset,
     formState: {
       errors,
       touchedFields,
@@ -90,6 +91,15 @@ const YouTubeForm = () => {
       shouldValidate: true,
     });
   };
+
+  /*  This `useEffect` hook is resetting the form when the form is successfully submitted. It listens to
+   the `isSubmitSuccessful` variable and when it changes, it calls the `reset()` function which resets
+   the form to its default values. */
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset();
+    }
+  }, [isSubmitSuccessful]);
 
   renderCount++;
   return (
