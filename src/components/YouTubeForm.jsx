@@ -95,11 +95,12 @@ const YouTubeForm = () => {
   /*  This `useEffect` hook is resetting the form when the form is successfully submitted. It listens to
    the `isSubmitSuccessful` variable and when it changes, it calls the `reset()` function which resets
    the form to its default values. */
-  useEffect(() => {
-    if (isSubmitSuccessful) {
-      reset();
-    }
-  }, [isSubmitSuccessful]);
+
+  // useEffect(() => {
+  //   if (isSubmitSuccessful) {
+  //     reset();
+  //   }
+  // }, [isSubmitSuccessful]);
 
   renderCount++;
   return (
@@ -148,6 +149,14 @@ const YouTubeForm = () => {
                     !fieldValue.endsWith('baddomain.com') ||
                     'This domain is not supported'
                   );
+                },
+                emailAvailable: async (fieldValue) => {
+                  const response = await fetch(
+                    `https://jsonplaceholder.typicode.com/users?email=${fieldValue}`
+                  );
+                  const data = await response.json();
+                  console.log('Email Exist?', data);
+                  return data.length === 0 || 'Email already exist';
                 },
               },
             })}
