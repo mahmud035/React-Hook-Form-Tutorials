@@ -12,7 +12,17 @@ const YouTubeForm = () => {
     watch,
     getValues,
     setValue,
-    formState: { errors, touchedFields, dirtyFields, isDirty, isValid },
+    formState: {
+      errors,
+      touchedFields,
+      dirtyFields,
+      isDirty,
+      isValid,
+      isSubmitting,
+      isSubmitted,
+      isSubmitSuccessful,
+      submitCount,
+    },
   } = useForm({
     //* INFO: set previously saved data as a defaultValues
     // defaultValues: async () => {
@@ -41,7 +51,8 @@ const YouTubeForm = () => {
     },
   });
 
-  // console.log({ touchedFields, dirtyFields, isDirty });
+  // console.log({ touchedFields, dirtyFields, isDirty, isValid });
+  console.log({ isSubmitting, isSubmitted, isSubmitSuccessful, submitCount });
 
   const { fields, append, remove } = useFieldArray({
     name: 'phNumbers',
@@ -64,7 +75,7 @@ const YouTubeForm = () => {
   };
 
   const onError = (errors) => {
-    console.log('Form errors', errors);
+    // console.log('Form errors', errors);
   };
 
   const handleGetValues = () => {
@@ -281,7 +292,7 @@ const YouTubeForm = () => {
         <button type="button" onClick={handleSetValue}>
           Set Value
         </button>{' '}
-        <button disabled={!isDirty || !isValid}>Submit</button>
+        <button disabled={!isDirty || !isValid || isSubmitting}>Submit</button>
       </form>
       <DevTool control={control} /> {/* set up the dev tool */}
     </div>
