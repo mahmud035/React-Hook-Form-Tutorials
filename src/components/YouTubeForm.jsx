@@ -12,7 +12,7 @@ const YouTubeForm = () => {
     watch,
     getValues,
     setValue,
-    formState: { errors, touchedFields, dirtyFields, isDirty },
+    formState: { errors, touchedFields, dirtyFields, isDirty, isValid },
   } = useForm({
     //* INFO: set previously saved data as a defaultValues
     // defaultValues: async () => {
@@ -281,7 +281,7 @@ const YouTubeForm = () => {
         <button type="button" onClick={handleSetValue}>
           Set Value
         </button>{' '}
-        <button>Submit</button>
+        <button disabled={!isDirty || !isValid}>Submit</button>
       </form>
       <DevTool control={control} /> {/* set up the dev tool */}
     </div>
